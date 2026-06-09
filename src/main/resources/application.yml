@@ -25,8 +25,10 @@ spring:
         order_updates: true
         default_schema: ${ORACLE_SCHEMA:SYSTEM}
   liquibase:
+    enabled: true
     change-log: classpath:db/changelog/db.changelog-master.xml
     default-schema: ${ORACLE_SCHEMA:SYSTEM}
+    liquibase-schema: ${ORACLE_SCHEMA:SYSTEM}
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
     consumer:
@@ -59,6 +61,7 @@ logging:
     com.hotel.operacloud: INFO
     org.springframework.kafka: WARN
     org.hibernate.SQL: WARN
+    liquibase: INFO
 
 server:
   port: 7668

@@ -5,14 +5,14 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="classpath:db/changelog/001_name.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/002_membership.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/003_name_address.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/004_name_phone.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/005_reservation_name.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/006_reservation_daily_elements.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/007_reservation_daily_element_name.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/008_reservation_special_requests.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:db/changelog/009_financial_transactions.xml" relativeToChangelogFile="false"/>
+    <include file="001_name.xml" relativeToChangelogFile="true"/>
+    <include file="002_membership.xml" relativeToChangelogFile="true"/>
+    <include file="003_name_address.xml" relativeToChangelogFile="true"/>
+    <include file="004_name_phone.xml" relativeToChangelogFile="true"/>
+    <include file="005_reservation_name.xml" relativeToChangelogFile="true"/>
+    <include file="006_reservation_daily_elements.xml" relativeToChangelogFile="true"/>
+    <include file="007_reservation_daily_element_name.xml" relativeToChangelogFile="true"/>
+    <include file="008_reservation_special_requests.xml" relativeToChangelogFile="true"/>
+    <include file="009_financial_transactions.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
