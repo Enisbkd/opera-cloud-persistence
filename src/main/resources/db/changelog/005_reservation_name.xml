@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000005-1" author="jhipster">
+        <createTable tableName="reservation_name">
+            <column name="resv_name_id" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_reservation_name"/>
+            </column>
+            <column name="begin_date" type="varchar2(40)"/>
+            <column name="confirmation_no" type="varchar2(80)"/>
+            <column name="end_date" type="varchar2(40)"/>
+            <column name="external_reference" type="varchar2(80)"/>
+            <column name="financially_responsible_yn" type="varchar2(1)"/>
+            <column name="folio_close_date" type="varchar2(40)"/>
+            <column name="guest_first_name" type="varchar2(80)"/>
+            <column name="guest_last_name" type="varchar2(80)"/>
+            <column name="insert_date" type="varchar2(40)"/>
+            <column name="membership_id" type="number(19, 0)"/>
+            <column name="name_id" type="number(19, 0)"/>
+            <column name="name_usage_type" type="varchar2(20)"/>
+            <column name="party_code" type="varchar2(20)"/>
+            <column name="posting_allowed_yn" type="varchar2(1)"/>
+            <column name="resort" type="varchar2(20)"/>
+            <column name="resv_status" type="varchar2(20)"/>
+            <column name="res_insert_source" type="varchar2(20)"/>
+            <column name="room_class" type="varchar2(20)"/>
+            <column name="sguest_firstname" type="varchar2(80)"/>
+            <column name="sguest_name" type="varchar2(80)"/>
+            <column name="trunc_begin_date" type="date"/>
+            <column name="trunc_end_date" type="date"/>
+            <column name="udfc16" type="varchar2(200)"/>
+            <column name="udfc22" type="varchar2(200)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000005-2" author="jhipster">
+        <createIndex indexName="idx_resv_name_name_id" tableName="reservation_name">
+            <column name="name_id"/>
+        </createIndex>
+        <createIndex indexName="idx_resv_name_resort" tableName="reservation_name">
+            <column name="resort"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

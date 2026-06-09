@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    url: ${ORACLE_URL:jdbc:oracle:thin:@localhost:1521/XEPDB1}
+    username: ${ORACLE_USER:hotel}
+    password: ${ORACLE_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: opera-persistence-pool
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+        default_schema: ${ORACLE_SCHEMA:HOTEL}
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: ${ORACLE_SCHEMA:HOTEL}
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
+    consumer:
+      group-id: opera-cloud-persistence
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+kafka:
+  name:
+    input-topic: ${NAME_INPUT_TOPIC:oc_name_dev}
+  membership:
+    input-topic: ${MEMBERSHIP_INPUT_TOPIC:oc_membership_dev}
+  name-address:
+    input-topic: ${NAME_ADDRESS_INPUT_TOPIC:oc_name_address_dev}
+  name-phone:
+    input-topic: ${NAME_PHONE_INPUT_TOPIC:oc_name_phone_dev}
+  reservation-name:
+    input-topic: ${RESV_NAME_INPUT_TOPIC:oc_reservation_name_dev}
+  reservation-daily-elements:
+    input-topic: ${RESV_DAILY_EL_INPUT_TOPIC:oc_reservation_daily_elements_dev}
+  reservation-daily-element-name:
+    input-topic: ${RESV_DAILY_EL_NAME_INPUT_TOPIC:oc_reservation_daily_element_name_dev}
+  reservation-special-requests:
+    input-topic: ${RESV_SPECIAL_REQUESTS_INPUT_TOPIC:oc_reservation_special_requests_dev}
+  financial:
+    input-topic: ${FINANCIAL_INPUT_TOPIC:oc_financial_transactions_dev}
+
+logging:
+  level:
+    com.hotel.operacloud: INFO
+    org.springframework.kafka: WARN
+    org.hibernate.SQL: WARN
+
+server:
+  port: 7668

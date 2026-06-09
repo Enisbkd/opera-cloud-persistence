@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000006-1" author="jhipster">
+        <createTable tableName="reservation_daily_elements">
+            <column name="reservation_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resort" type="varchar2(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resv_daily_el_seq" type="number(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resv_name_id" type="number(19, 0)"/>
+            <column name="allotment_header_id" type="number(19, 0)"/>
+            <column name="booked_room_category" type="varchar2(20)"/>
+            <column name="due_out_yn" type="varchar2(1)"/>
+            <column name="market_code" type="varchar2(20)"/>
+            <column name="origin_of_booking" type="varchar2(20)"/>
+            <column name="reservation_status" type="varchar2(20)"/>
+            <column name="room" type="varchar2(20)"/>
+            <column name="room_category" type="varchar2(20)"/>
+            <column name="room_class" type="varchar2(20)"/>
+            <column name="original_start_date" type="date"/>
+            <column name="percentage" type="number(10, 2)"/>
+            <column name="trx_code" type="varchar2(20)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000006-2" author="jhipster">
+        <addPrimaryKey
+            tableName="reservation_daily_elements"
+            columnNames="reservation_date, resort, resv_daily_el_seq"
+            constraintName="pk_reservation_daily_elements"/>
+    </changeSet>
+
+    <changeSet id="00000000000006-3" author="jhipster">
+        <createIndex indexName="idx_rde_resv_name_id" tableName="reservation_daily_elements">
+            <column name="resv_name_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000004-1" author="jhipster">
+        <createTable tableName="name_phone">
+            <column name="phone_id" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_name_phone"/>
+            </column>
+            <column name="name_id" type="number(19, 0)"/>
+            <column name="phone_type" type="varchar2(20)"/>
+            <column name="phone_role" type="varchar2(20)"/>
+            <column name="phone_number" type="varchar2(80)"/>
+            <column name="primary_yn" type="varchar2(1)"/>
+            <column name="default_confirmation_yn" type="varchar2(1)"/>
+            <column name="email_format" type="varchar2(20)"/>
+            <column name="index_phone" type="varchar2(80)"/>
+            <column name="display_seq" type="number(10, 0)"/>
+            <column name="begin_date" type="varchar2(40)"/>
+            <column name="end_date" type="varchar2(40)"/>
+            <column name="inactive_date" type="varchar2(40)"/>
+            <column name="insert_date" type="varchar2(40)"/>
+            <column name="insert_user" type="number(19, 0)"/>
+            <column name="update_date" type="varchar2(40)"/>
+            <column name="update_user" type="number(19, 0)"/>
+            <column name="address_id" type="number(19, 0)"/>
+            <column name="laptop_change" type="number(19, 0)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000004-2" author="jhipster">
+        <createIndex indexName="idx_name_phone_name_id" tableName="name_phone">
+            <column name="name_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

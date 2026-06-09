@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000001-1" author="jhipster">
+        <createTable tableName="name">
+            <column name="name_id" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_name"/>
+            </column>
+            <column name="last" type="varchar2(200)"/>
+            <column name="sname" type="varchar2(200)"/>
+            <column name="first" type="varchar2(200)"/>
+            <column name="sfirst" type="varchar2(200)"/>
+            <column name="middle" type="varchar2(200)"/>
+            <column name="title" type="varchar2(40)"/>
+            <column name="salutation" type="varchar2(40)"/>
+            <column name="gender" type="varchar2(1)"/>
+            <column name="nationality" type="varchar2(20)"/>
+            <column name="language" type="varchar2(20)"/>
+            <column name="birth_country" type="varchar2(20)"/>
+            <column name="birth_place" type="varchar2(80)"/>
+            <column name="name_type" type="varchar2(20)"/>
+            <column name="name_code" type="varchar2(20)"/>
+            <column name="profession" type="varchar2(80)"/>
+            <column name="vip_status" type="varchar2(20)"/>
+            <column name="active_yn" type="varchar2(1)"/>
+            <column name="inactive_date" type="varchar2(40)"/>
+            <column name="anonymization_status" type="varchar2(20)"/>
+            <column name="anonymization_date" type="varchar2(40)"/>
+            <column name="bl_msg" type="varchar2(2000)"/>
+            <column name="cash_bl_ind" type="varchar2(1)"/>
+            <column name="email_yn" type="varchar2(1)"/>
+            <column name="mail_yn" type="varchar2(1)"/>
+            <column name="mail_list" type="varchar2(1)"/>
+            <column name="insert_date" type="varchar2(40)"/>
+            <column name="insert_user" type="number(19, 0)"/>
+            <column name="update_date" type="varchar2(40)"/>
+            <column name="update_user" type="number(19, 0)"/>
+            <column name="account_type" type="varchar2(20)"/>
+            <column name="accountsource" type="varchar2(20)"/>
+            <column name="business_title" type="varchar2(80)"/>
+            <column name="company" type="varchar2(80)"/>
+            <column name="competition_code" type="varchar2(20)"/>
+            <column name="contact_yn" type="varchar2(1)"/>
+            <column name="department" type="varchar2(80)"/>
+            <column name="industry_code" type="varchar2(20)"/>
+            <column name="influence" type="varchar2(20)"/>
+            <column name="markets" type="varchar2(20)"/>
+            <column name="priority" type="varchar2(20)"/>
+            <column name="rooms_potential" type="varchar2(20)"/>
+            <column name="territory" type="varchar2(20)"/>
+            <column name="tracecode" type="varchar2(20)"/>
+            <column name="scope" type="varchar2(20)"/>
+            <column name="scope_city" type="varchar2(20)"/>
+            <column name="chain_code" type="varchar2(20)"/>
+            <column name="resort_registered" type="varchar2(20)"/>
+            <column name="last_updated_resort" type="varchar2(20)"/>
+            <column name="action_code" type="varchar2(20)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000002-1" author="jhipster">
+        <createTable tableName="membership">
+            <column name="membership_id" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_membership"/>
+            </column>
+            <column name="name_id" type="number(19, 0)"/>
+            <column name="membership_type" type="varchar2(40)"/>
+            <column name="membership_card_no" type="varchar2(80)"/>
+            <column name="membership_level" type="varchar2(20)"/>
+            <column name="name_on_card" type="varchar2(80)"/>
+            <column name="chain_code" type="varchar2(20)"/>
+            <column name="joined_date" type="varchar2(40)"/>
+            <column name="expiration_date" type="varchar2(40)"/>
+            <column name="inactive_date" type="varchar2(40)"/>
+            <column name="insert_date" type="varchar2(40)"/>
+            <column name="update_date" type="varchar2(40)"/>
+            <column name="order_by" type="number(19, 0)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000002-2" author="jhipster">
+        <createIndex indexName="idx_membership_name_id" tableName="membership">
+            <column name="name_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

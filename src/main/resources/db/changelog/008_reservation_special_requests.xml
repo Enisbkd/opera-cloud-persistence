@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000008-1" author="jhipster">
+        <createTable tableName="reservation_special_requests">
+            <column name="resort" type="varchar2(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resv_name_id" type="number(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_request_id" type="varchar2(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comments" type="varchar2(2000)"/>
+            <column name="dml_seq_no" type="number(19, 0)"/>
+            <column name="external_special_id" type="varchar2(80)"/>
+            <column name="insert_action_instance_id" type="number(19, 0)"/>
+            <column name="insert_date" type="varchar2(40)"/>
+            <column name="insert_user" type="number(19, 0)"/>
+            <column name="pre_arrival_dt" type="varchar2(40)"/>
+            <column name="source" type="varchar2(20)"/>
+            <column name="update_date" type="varchar2(40)"/>
+            <column name="update_user" type="number(19, 0)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000008-2" author="jhipster">
+        <addPrimaryKey
+            tableName="reservation_special_requests"
+            columnNames="resort, resv_name_id, special_request_id"
+            constraintName="pk_reservation_special_requests"/>
+    </changeSet>
+
+</databaseChangeLog>

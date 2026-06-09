@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000007-1" author="jhipster">
+        <createTable tableName="reservation_daily_element_name">
+            <column name="resort" type="varchar2(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resv_name_id" type="number(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reservation_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="adults" type="number(10, 0)"/>
+            <column name="children" type="number(10, 0)"/>
+            <column name="company_id" type="number(19, 0)"/>
+            <column name="rate_code" type="varchar2(20)"/>
+            <column name="resv_contact_id" type="number(19, 0)"/>
+            <column name="source_id" type="varchar2(20)"/>
+            <column name="travel_agent_id" type="number(19, 0)"/>
+            <column name="resv_daily_el_seq" type="number(19, 0)"/>
+            <column name="share_amount_original" type="number(22, 10)"/>
+            <column name="tc_group" type="varchar2(20)"/>
+            <column name="tc_subgroup" type="varchar2(20)"/>
+            <column name="trx_code" type="varchar2(20)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000007-2" author="jhipster">
+        <addPrimaryKey
+            tableName="reservation_daily_element_name"
+            columnNames="resort, resv_name_id, reservation_date"
+            constraintName="pk_reservation_daily_element_name"/>
+    </changeSet>
+
+</databaseChangeLog>
