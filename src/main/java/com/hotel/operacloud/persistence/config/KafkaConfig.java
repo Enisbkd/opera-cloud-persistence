@@ -31,6 +31,7 @@ public class KafkaConfig {
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.setCommonErrorHandler(kafkaErrorHandler);
+        factory.getContainerProperties().setMissingTopicsFatal(false);
         return factory;
     }
 }

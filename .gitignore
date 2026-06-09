@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+
+# IDE
+*.iws
+*.iml
+*.ipr
+
+# Qodo
+.qodo/
+
+# Java
+*.class
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
