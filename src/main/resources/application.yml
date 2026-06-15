@@ -59,6 +59,8 @@ kafka:
     input-topic: ${AR_ACCOUNT_INPUT_TOPIC:oc_ar_account_dev}
   folio-tax:
     input-topic: ${FOLIO_TAX_INPUT_TOPIC:oc_folio_tax_dev}
+  trx-codes:
+    input-topic: ${TRX_CODES_INPUT_TOPIC:oc_trx_codes_dev}
 
 logging:
   level:

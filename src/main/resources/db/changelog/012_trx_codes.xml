@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000012-1" author="jhipster">
+        <createTable tableName="trx_codes">
+            <column name="resort" type="varchar2(20)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_trx_codes"/>
+            </column>
+            <column name="trx_code" type="varchar2(20)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_trx_codes"/>
+            </column>
+            <column name="description" type="varchar2(2000)"/>
+            <column name="tc_group" type="varchar2(20)"/>
+            <column name="tc_subgroup" type="varchar2(20)"/>
+            <column name="tc_transaction_type" type="char(5)"/>
+            <column name="tax_code_no" type="number(10, 0)"/>
+            <column name="trx_code_type" type="varchar2(2)"/>
+            <column name="ind_revenue_gp" type="varchar2(1)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

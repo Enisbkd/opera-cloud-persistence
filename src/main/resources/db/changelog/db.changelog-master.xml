@@ -16,5 +16,6 @@
     <include file="009_financial_transactions.xml" relativeToChangelogFile="true"/>
     <include file="010_ar_account.xml" relativeToChangelogFile="true"/>
     <include file="011_folio_tax.xml" relativeToChangelogFile="true"/>
+    <include file="012_trx_codes.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
