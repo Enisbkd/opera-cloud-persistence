@@ -55,6 +55,10 @@ kafka:
     input-topic: ${RESV_SPECIAL_REQUESTS_INPUT_TOPIC:oc_reservation_special_requests_dev}
   financial:
     input-topic: ${FINANCIAL_INPUT_TOPIC:oc_financial_transactions_dev}
+  ar-account:
+    input-topic: ${AR_ACCOUNT_INPUT_TOPIC:oc_ar_account_dev}
+  folio-tax:
+    input-topic: ${FOLIO_TAX_INPUT_TOPIC:oc_folio_tax_dev}
 
 logging:
   level:

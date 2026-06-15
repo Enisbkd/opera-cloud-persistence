@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000011-1" author="jhipster">
+        <createTable tableName="folio_tax">
+            <column name="resort" type="varchar2(20)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
+            </column>
+            <column name="resv_name_id" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
+            </column>
+            <column name="folio_view" type="number(19, 0)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
+            </column>
+            <column name="payee_name_id" type="number(19, 0)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000011-2" author="jhipster">
+        <createIndex indexName="idx_folio_tax_resv_name_id" tableName="folio_tax">
+            <column name="resv_name_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

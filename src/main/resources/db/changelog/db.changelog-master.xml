@@ -14,5 +14,7 @@
     <include file="007_reservation_daily_element_name.xml" relativeToChangelogFile="true"/>
     <include file="008_reservation_special_requests.xml" relativeToChangelogFile="true"/>
     <include file="009_financial_transactions.xml" relativeToChangelogFile="true"/>
+    <include file="010_ar_account.xml" relativeToChangelogFile="true"/>
+    <include file="011_folio_tax.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
