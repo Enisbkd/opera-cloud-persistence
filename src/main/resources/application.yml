@@ -23,12 +23,12 @@ spring:
           batch_size: 50
         order_inserts: true
         order_updates: true
-        default_schema: ${ORACLE_SCHEMA:SYSTEM}
+        default_schema: ${ORACLE_SCHEMA:OPERA}
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.xml
-    default-schema: ${ORACLE_SCHEMA:SYSTEM}
-    liquibase-schema: ${ORACLE_SCHEMA:SYSTEM}
+    default-schema: ${ORACLE_SCHEMA:OPERA}
+    liquibase-schema: ${ORACLE_SCHEMA:OPERA}
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
     consumer:
