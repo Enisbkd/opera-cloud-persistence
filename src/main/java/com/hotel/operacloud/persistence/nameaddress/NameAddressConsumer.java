@@ -21,6 +21,10 @@ public class NameAddressConsumer {
     public void consume(@Payload String message) {
         try {
             NameAddressRecord record = objectMapper.readValue(message, NameAddressRecord.class);
+            if (record.getAddressId() == null) {
+                log.warn("NAME_ADDRESS skipping record with null addressId: {}", message);
+                return;
+            }
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(record.getAddressId());
                 log.debug("NAME_ADDRESS deleted addressId={}", record.getAddressId());

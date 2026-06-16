@@ -16,7 +16,9 @@ public class FinancialTransactionConsumer {
     private final ObjectMapper objectMapper;
     private final FinancialTransactionRepository repository;
 
-    @KafkaListener(topics = "${kafka.financial.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.financial.input-topic}",
+            concurrency = "12",
+            groupId = "opera-cloud-persistence")
     @Transactional
     public void consume(@Payload String message) {
         try {

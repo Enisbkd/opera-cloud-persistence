@@ -89,7 +89,7 @@
             <column name="source_commission_net_yn" type="varchar2(1)"/>
             <column name="to_resv_name_id" type="number(19, 0)"/>
             <column name="trx_no_header" type="number(19, 0)"/>
-            <column name="package_trx_type" type="varchar2(20)"/>
+            <column name="package_trx_type" type="varchar2(50)"/>
             <column name="ta_commission_net_yn" type="varchar2(1)"/>
             <column name="tech_created_date" type="timestamp(6)">
                 <constraints nullable="false"/>

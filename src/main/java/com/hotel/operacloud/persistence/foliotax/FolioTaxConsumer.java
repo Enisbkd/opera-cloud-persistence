@@ -28,6 +28,10 @@ public class FolioTaxConsumer {
                 log.debug("FOLIO_TAX deleted resort={} resvNameId={} folioView={}",
                         record.getResort(), record.getResvNameId(), record.getFolioView());
             } else {
+                if(record.getResort()==null || record.getResvNameId()==null){
+                    log.warn("FOLIO_TAX skipping record with null resort or resvNameId: {}", message);
+                    return;
+                }
                 repository.save(toEntity(record, id));
                 log.debug("FOLIO_TAX upserted resort={} resvNameId={} folioView={}",
                         record.getResort(), record.getResvNameId(), record.getFolioView());

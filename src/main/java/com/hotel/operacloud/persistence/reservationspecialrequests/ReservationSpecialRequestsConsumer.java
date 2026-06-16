@@ -22,6 +22,10 @@ public class ReservationSpecialRequestsConsumer {
         try {
             ReservationSpecialRequestsRecord record =
                     objectMapper.readValue(message, ReservationSpecialRequestsRecord.class);
+            if (record.getSpecialRequestId() == null || record.getResvNameId() == null || record.getResort() == null) {
+                log.warn("RESERVATION_SPECIAL_REQUESTS skipping record with null specialRequestId: {}", message);
+                return;
+            }
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteByResvNameId(record.getResvNameId());
                 log.debug("RESERVATION_SPECIAL_REQUESTS deleted resvNameId={}", record.getResvNameId());
@@ -39,6 +43,7 @@ public class ReservationSpecialRequestsConsumer {
     private ReservationSpecialRequestsEntity toEntity(ReservationSpecialRequestsRecord r) {
         ReservationSpecialRequestsEntity e = new ReservationSpecialRequestsEntity();
         e.setId(new ReservationSpecialRequestsId(r.getResort(), r.getResvNameId(), r.getSpecialRequestId()));
+
         e.setComments(r.getComments());
         e.setDmlSeqNo(r.getDmlSeqNo());
         e.setExternalSpecialId(r.getExternalSpecialId());

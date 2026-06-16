@@ -22,7 +22,7 @@
             <column name="membership_id" type="number(19, 0)"/>
             <column name="name_id" type="number(19, 0)"/>
             <column name="name_usage_type" type="varchar2(20)"/>
-            <column name="party_code" type="varchar2(20)"/>
+            <column name="party_code" type="varchar2(50)"/>
             <column name="posting_allowed_yn" type="varchar2(1)"/>
             <column name="resort" type="varchar2(20)"/>
             <column name="resv_status" type="varchar2(20)"/>
