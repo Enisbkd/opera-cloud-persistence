@@ -16,7 +16,7 @@ public class ArAccountConsumer {
     private final ObjectMapper objectMapper;
     private final ArAccountRepository repository;
 
-    @KafkaListener(topics = "${kafka.ar-account.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.ar-account.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
@@ -25,13 +25,13 @@ public class ArAccountConsumer {
 
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(id);
-                log.debug("AR_ACCOUNT deleted resort={} accountCode={}", record.getResort(), record.getAccountCode());
+                log.info("AR_ACCOUNT deleted resort={} accountCode={}", record.getResort(), record.getAccountCode());
             } else {
                 repository.save(toEntity(record, id));
                 log.debug("AR_ACCOUNT upserted resort={} accountCode={}", record.getResort(), record.getAccountCode());
             }
         } catch (Exception e) {
-            log.error("AR_ACCOUNT consumer failed: {}", e.getMessage(), e);
+            log.error("AR_ACCOUNT consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("AR_ACCOUNT consumer failed", e);
         }
     }

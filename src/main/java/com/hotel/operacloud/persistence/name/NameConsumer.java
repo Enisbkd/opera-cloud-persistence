@@ -16,20 +16,20 @@ public class NameConsumer {
     private final ObjectMapper objectMapper;
     private final NameRepository repository;
 
-    @KafkaListener(topics = "${kafka.name.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.name.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
             NameRecord record = objectMapper.readValue(message, NameRecord.class);
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(record.getNameId());
-                log.debug("NAME deleted nameId={}", record.getNameId());
+                log.info("NAME deleted nameId={}", record.getNameId());
             } else {
                 repository.save(toEntity(record));
                 log.debug("NAME upserted nameId={}", record.getNameId());
             }
         } catch (Exception e) {
-            log.error("NAME consumer failed: {}", e.getMessage(), e);
+            log.error("NAME consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("NAME consumer failed", e);
         }
     }

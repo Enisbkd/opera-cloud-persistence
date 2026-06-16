@@ -16,20 +16,20 @@ public class MembershipConsumer {
     private final ObjectMapper objectMapper;
     private final MembershipRepository repository;
 
-    @KafkaListener(topics = "${kafka.membership.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.membership.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
             MembershipRecord record = objectMapper.readValue(message, MembershipRecord.class);
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(record.getMembershipId());
-                log.debug("MEMBERSHIP deleted membershipId={}", record.getMembershipId());
+                log.info("MEMBERSHIP deleted membershipId={}", record.getMembershipId());
             } else {
                 repository.save(toEntity(record));
                 log.debug("MEMBERSHIP upserted membershipId={}", record.getMembershipId());
             }
         } catch (Exception e) {
-            log.error("MEMBERSHIP consumer failed: {}", e.getMessage(), e);
+            log.error("MEMBERSHIP consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("MEMBERSHIP consumer failed", e);
         }
     }

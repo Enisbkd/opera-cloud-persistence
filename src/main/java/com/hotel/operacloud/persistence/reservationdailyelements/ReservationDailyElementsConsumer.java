@@ -18,21 +18,21 @@ public class ReservationDailyElementsConsumer {
     private final ObjectMapper objectMapper;
     private final ReservationDailyElementsRepository repository;
 
-    @KafkaListener(topics = "${kafka.reservation-daily-elements.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.reservation-daily-elements.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
             ReservationDailyElementsRecord record = objectMapper.readValue(message, ReservationDailyElementsRecord.class);
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteByResvNameId(record.getResvNameId());
-                log.debug("RESERVATION_DAILY_ELEMENTS deleted resvNameId={}", record.getResvNameId());
+                log.info("RESERVATION_DAILY_ELEMENTS deleted resvNameId={}", record.getResvNameId());
             } else {
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_DAILY_ELEMENTS upserted resort={} date={} seq={}",
                         record.getResort(), record.getReservationDate(), record.getResvDailyElSeq());
             }
         } catch (Exception e) {
-            log.error("RESERVATION_DAILY_ELEMENTS consumer failed: {}", e.getMessage(), e);
+            log.error("RESERVATION_DAILY_ELEMENTS consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("RESERVATION_DAILY_ELEMENTS consumer failed", e);
         }
     }

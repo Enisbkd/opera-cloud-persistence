@@ -16,24 +16,24 @@ public class NameAddressConsumer {
     private final ObjectMapper objectMapper;
     private final NameAddressRepository repository;
 
-    @KafkaListener(topics = "${kafka.name-address.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.name-address.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
             NameAddressRecord record = objectMapper.readValue(message, NameAddressRecord.class);
             if (record.getAddressId() == null) {
-                log.warn("NAME_ADDRESS skipping record with null addressId: {}", message);
+                log.warn("NAME_ADDRESS skipping record with null addressId");
                 return;
             }
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(record.getAddressId());
-                log.debug("NAME_ADDRESS deleted addressId={}", record.getAddressId());
+                log.info("NAME_ADDRESS deleted addressId={}", record.getAddressId());
             } else {
                 repository.save(toEntity(record));
                 log.debug("NAME_ADDRESS upserted addressId={}", record.getAddressId());
             }
         } catch (Exception e) {
-            log.error("NAME_ADDRESS consumer failed: {}", e.getMessage(), e);
+            log.error("NAME_ADDRESS consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("NAME_ADDRESS consumer failed", e);
         }
     }

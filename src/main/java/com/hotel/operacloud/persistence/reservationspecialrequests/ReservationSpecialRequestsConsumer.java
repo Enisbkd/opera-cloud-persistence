@@ -16,26 +16,26 @@ public class ReservationSpecialRequestsConsumer {
     private final ObjectMapper objectMapper;
     private final ReservationSpecialRequestsRepository repository;
 
-    @KafkaListener(topics = "${kafka.reservation-special-requests.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.reservation-special-requests.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
         try {
             ReservationSpecialRequestsRecord record =
                     objectMapper.readValue(message, ReservationSpecialRequestsRecord.class);
             if (record.getSpecialRequestId() == null || record.getResvNameId() == null || record.getResort() == null) {
-                log.warn("RESERVATION_SPECIAL_REQUESTS skipping record with null specialRequestId: {}", message);
+                log.warn("RESERVATION_SPECIAL_REQUESTS skipping record with null key fields (resort/resvNameId/specialRequestId)");
                 return;
             }
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteByResvNameId(record.getResvNameId());
-                log.debug("RESERVATION_SPECIAL_REQUESTS deleted resvNameId={}", record.getResvNameId());
+                log.info("RESERVATION_SPECIAL_REQUESTS deleted resvNameId={}", record.getResvNameId());
             } else {
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_SPECIAL_REQUESTS upserted resort={} resvNameId={} specialRequestId={}",
                         record.getResort(), record.getResvNameId(), record.getSpecialRequestId());
             }
         } catch (Exception e) {
-            log.error("RESERVATION_SPECIAL_REQUESTS consumer failed: {}", e.getMessage(), e);
+            log.error("RESERVATION_SPECIAL_REQUESTS consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("RESERVATION_SPECIAL_REQUESTS consumer failed", e);
         }
     }

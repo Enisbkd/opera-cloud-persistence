@@ -16,9 +16,7 @@ public class FinancialTransactionConsumer {
     private final ObjectMapper objectMapper;
     private final FinancialTransactionRepository repository;
 
-    @KafkaListener(topics = "${kafka.financial.input-topic}",
-            concurrency = "12",
-            groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.financial.input-topic}", concurrency = "12")
     @Transactional
     public void consume(@Payload String message) {
         try {
@@ -26,13 +24,13 @@ public class FinancialTransactionConsumer {
                     objectMapper.readValue(message, FinancialTransactionRecord.class);
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(record.getTrxNo());
-                log.debug("FINANCIAL_TRANSACTIONS deleted trxNo={}", record.getTrxNo());
+                log.info("FINANCIAL_TRANSACTIONS deleted trxNo={}", record.getTrxNo());
             } else {
                 repository.save(toEntity(record));
                 log.debug("FINANCIAL_TRANSACTIONS upserted trxNo={}", record.getTrxNo());
             }
         } catch (Exception e) {
-            log.error("FINANCIAL_TRANSACTIONS consumer failed: {}", e.getMessage(), e);
+            log.error("FINANCIAL_TRANSACTIONS consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("FINANCIAL_TRANSACTIONS consumer failed", e);
         }
     }

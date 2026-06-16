@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <springProperty scope="context" name="appName"       source="spring.application.name"      defaultValue="opera-cloud-persistence"/>
+    <springProperty scope="context" name="kafkaBrokers"  source="spring.kafka.bootstrap-servers" defaultValue="localhost:9092"/>
+    <springProperty scope="context" name="logKafkaTopic" source="logging.kafka.topic"           defaultValue="app-logs"/>
+
+    <!-- Console appender used in all profiles and as fallback for the Kafka appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [${appName}] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+        Kafka appender — active only in prod profile.
+        Uses fire-and-forget delivery (acks=0, retries=0) so logging never blocks consumers.
+        Falls back to CONSOLE when Kafka is unreachable.
+    -->
+    <springProfile name="prod">
+        <appender name="KAFKA" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <customFields>{"application":"${appName}"}</customFields>
+            </encoder>
+            <topic>${logKafkaTopic}</topic>
+            <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.RoundRobinKeyingStrategy"/>
+            <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+            <producerConfig>bootstrap.servers=${kafkaBrokers}</producerConfig>
+            <producerConfig>acks=0</producerConfig>
+            <producerConfig>retries=0</producerConfig>
+            <producerConfig>linger.ms=100</producerConfig>
+            <producerConfig>max.block.ms=500</producerConfig>
+            <appender-ref ref="CONSOLE"/>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="KAFKA"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!-- Default: no profile active -->
+    <springProfile name="!dev &amp;&amp; !prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>

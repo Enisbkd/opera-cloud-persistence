@@ -16,25 +16,26 @@ public class RateHeaderConsumer {
     private final ObjectMapper objectMapper;
     private final RateHeaderRepository repository;
 
-    @KafkaListener(topics = "${kafka.rate-header.input-topic}", groupId = "opera-cloud-persistence")
+    @KafkaListener(topics = "${kafka.rate-header.input-topic}")
     @Transactional
     public void consume(@Payload String message) {
+        if (message == null) {
+            log.warn("RATE_HEADER received null message, skipping");
+            return;
+        }
         try {
-            if (message == null) {
-                return;
-            }
             RateHeaderRecord record = objectMapper.readValue(message, RateHeaderRecord.class);
             RateHeaderId id = new RateHeaderId(record.getResort(), record.getRateCode());
 
             if ("DELETE".equalsIgnoreCase(record.getOperation())) {
                 repository.deleteById(id);
-                log.debug("RATE_HEADER deleted resort={} rateCode={}", record.getResort(), record.getRateCode());
+                log.info("RATE_HEADER deleted resort={} rateCode={}", record.getResort(), record.getRateCode());
             } else {
                 repository.save(toEntity(record, id));
                 log.debug("RATE_HEADER upserted resort={} rateCode={}", record.getResort(), record.getRateCode());
             }
         } catch (Exception e) {
-            log.error("RATE_HEADER consumer failed: {}", e.getMessage(), e);
+            log.error("RATE_HEADER consumer failed. Payload=[{}]: {}", message, e.getMessage(), e);
             throw new RuntimeException("RATE_HEADER consumer failed", e);
         }
     }
