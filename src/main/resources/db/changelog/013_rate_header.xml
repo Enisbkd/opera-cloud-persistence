@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="00000000000013-1" author="jhipster">
+        <createTable tableName="rate_header">
+            <column name="resort" type="varchar2(20)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_rate_header"/>
+            </column>
+            <column name="rate_code" type="varchar2(20)">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_rate_header"/>
+            </column>
+            <column name="rate_category" type="varchar2(20)"/>
+            <column name="description" type="varchar2(2000)"/>
+            <column name="begin_booking_date" type="varchar2(30)"/>
+            <column name="end_booking_date" type="varchar2(30)"/>
+            <column name="yieldable_yn" type="varchar2(1)"/>
+            <column name="package_yn" type="varchar2(1)"/>
+            <column name="folio_text" type="varchar2(2000)"/>
+            <column name="inactive_date" type="varchar2(30)"/>
+            <column name="insert_date" type="varchar2(30)"/>
+            <column name="update_date" type="varchar2(30)"/>
+            <column name="trx_code" type="varchar2(20)"/>
+            <column name="tech_created_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tech_updated_date" type="timestamp(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -61,6 +61,8 @@ kafka:
     input-topic: ${FOLIO_TAX_INPUT_TOPIC:oc_folio_tax_dev}
   trx-codes:
     input-topic: ${TRX_CODES_INPUT_TOPIC:oc_trx_codes_dev}
+  rate-header:
+    input-topic: ${RATE_HEADER_INPUT_TOPIC:oc_rate_header_dev}
 
 logging:
   level:
