@@ -5,18 +5,19 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000011-1" author="jhipster">
+    <changeSet id="011-1" author="Anis">
         <createTable tableName="folio_tax">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
             </column>
-            <column name="resv_name_id" type="number(19, 0)">
+            <column name="resv_name_id" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
             </column>
-            <column name="folio_view" type="number(19, 0)">
+            <column name="folio_view" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
             </column>
-            <column name="payee_name_id" type="number(19, 0)"/>
+            <column name="payee_name_id" type="number(19,0)"/>
+            <column name="update_date" type="timestamp(6)"/>
             <column name="tech_created_date" type="timestamp(6)">
                 <constraints nullable="false"/>
             </column>
@@ -26,17 +27,13 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000011-2" author="jhipster">
+    <changeSet id="011-2" author="Anis">
         <createIndex indexName="idx_folio_tax_resv_name_id" tableName="folio_tax">
             <column name="resv_name_id"/>
         </createIndex>
-    </changeSet>
-
-
-    <changeSet id="00000000000011-3" author="jhipster">
-        <addColumn tableName="folio_tax">
-            <column name="update_date" type="varchar2(40)"/>
-        </addColumn>
+        <createIndex indexName="idx_folio_tax_update_date" tableName="folio_tax">
+            <column name="update_date"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

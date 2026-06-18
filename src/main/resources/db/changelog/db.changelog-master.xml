@@ -18,6 +18,5 @@
     <include file="011_folio_tax.xml" relativeToChangelogFile="true"/>
     <include file="012_trx_codes.xml" relativeToChangelogFile="true"/>
     <include file="013_rate_header.xml" relativeToChangelogFile="true"/>
-    <include file="014_update_date_type_and_indexes.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000012-1" author="jhipster">
+    <changeSet id="012-1" author="Anis">
         <createTable tableName="trx_codes">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_trx_codes"/>
@@ -17,9 +17,10 @@
             <column name="tc_group" type="varchar2(20)"/>
             <column name="tc_subgroup" type="varchar2(20)"/>
             <column name="tc_transaction_type" type="char(5)"/>
-            <column name="tax_code_no" type="number(10, 0)"/>
+            <column name="tax_code_no" type="number(10,0)"/>
             <column name="trx_code_type" type="varchar2(2)"/>
             <column name="ind_revenue_gp" type="varchar2(1)"/>
+            <column name="update_date" type="timestamp(6)"/>
             <column name="tech_created_date" type="timestamp(6)">
                 <constraints nullable="false"/>
             </column>
@@ -29,11 +30,10 @@
         </createTable>
     </changeSet>
 
-
-    <changeSet id="00000000000012-2" author="jhipster">
-        <addColumn tableName="trx_codes">
-            <column name="update_date" type="varchar2(40)"/>
-        </addColumn>
+    <changeSet id="012-2" author="Anis">
+        <createIndex indexName="idx_trx_codes_update_date" tableName="trx_codes">
+            <column name="update_date"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

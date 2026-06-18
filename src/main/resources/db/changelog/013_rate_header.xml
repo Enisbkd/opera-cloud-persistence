@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000013-1" author="jhipster">
+    <changeSet id="013-1" author="Anis">
         <createTable tableName="rate_header">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_rate_header"/>
@@ -22,7 +22,7 @@
             <column name="folio_text" type="varchar2(2000)"/>
             <column name="inactive_date" type="varchar2(30)"/>
             <column name="insert_date" type="varchar2(30)"/>
-            <column name="update_date" type="varchar2(30)"/>
+            <column name="update_date" type="timestamp(6)"/>
             <column name="trx_code" type="varchar2(20)"/>
             <column name="tech_created_date" type="timestamp(6)">
                 <constraints nullable="false"/>
@@ -31,6 +31,12 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="013-2" author="Anis">
+        <createIndex indexName="idx_rate_header_update_date" tableName="rate_header">
+            <column name="update_date"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

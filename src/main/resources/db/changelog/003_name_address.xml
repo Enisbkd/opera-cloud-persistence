@@ -5,12 +5,12 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000003-1" author="jhipster">
+    <changeSet id="003-1" author="Anis">
         <createTable tableName="name_address">
-            <column name="address_id" type="number(19, 0)">
+            <column name="address_id" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_name_address"/>
             </column>
-            <column name="name_id" type="number(19, 0)"/>
+            <column name="name_id" type="number(19,0)"/>
             <column name="address_type" type="varchar2(20)"/>
             <column name="address1" type="varchar2(200)"/>
             <column name="address2" type="varchar2(200)"/>
@@ -24,9 +24,9 @@
             <column name="country_code" type="varchar2(20)"/>
             <column name="primary_yn" type="varchar2(1)"/>
             <column name="insert_date" type="varchar2(40)"/>
-            <column name="insert_user" type="number(19, 0)"/>
-            <column name="update_date" type="varchar2(40)"/>
-            <column name="update_user" type="number(19, 0)"/>
+            <column name="insert_user" type="number(19,0)"/>
+            <column name="update_date" type="timestamp(6)"/>
+            <column name="update_user" type="number(19,0)"/>
             <column name="inactive_date" type="varchar2(40)"/>
             <column name="last_updated_resort" type="varchar2(20)"/>
             <column name="tech_created_date" type="timestamp(6)">
@@ -38,9 +38,12 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000003-2" author="jhipster">
+    <changeSet id="003-2" author="Anis">
         <createIndex indexName="idx_name_address_name_id" tableName="name_address">
             <column name="name_id"/>
+        </createIndex>
+        <createIndex indexName="idx_name_address_update_date" tableName="name_address">
+            <column name="update_date"/>
         </createIndex>
     </changeSet>
 

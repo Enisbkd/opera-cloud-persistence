@@ -5,48 +5,48 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000010-1" author="jhipster">
+    <changeSet id="010-1" author="Anis">
         <createTable tableName="ar_account">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_ar_account"/>
             </column>
-            <column name="account_code" type="number(19, 0)">
+            <column name="account_code" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_ar_account"/>
             </column>
             <column name="account_no" type="varchar2(20)"/>
-            <column name="account_type_id" type="number(19, 0)"/>
+            <column name="account_type_id" type="number(19,0)"/>
             <column name="account_name" type="varchar2(1000)"/>
             <column name="account_status" type="varchar2(1)"/>
             <column name="account_status_msg" type="varchar2(2000)"/>
             <column name="address1" type="varchar2(2000)"/>
             <column name="address2" type="varchar2(2000)"/>
             <column name="address3" type="varchar2(2000)"/>
-            <column name="address_id" type="number(19, 0)"/>
+            <column name="address_id" type="number(19,0)"/>
             <column name="batch_stmt_yn" type="varchar2(1)"/>
-            <column name="balance" type="number(22, 10)"/>
+            <column name="balance" type="number(22,10)"/>
             <column name="city" type="varchar2(80)"/>
             <column name="contact" type="varchar2(2000)"/>
             <column name="country" type="varchar2(20)"/>
-            <column name="credit_limit" type="number(22, 10)"/>
+            <column name="credit_limit" type="number(22,10)"/>
             <column name="email_address" type="varchar2(300)"/>
-            <column name="email_id" type="number(19, 0)"/>
+            <column name="email_id" type="number(19,0)"/>
             <column name="fax" type="varchar2(80)"/>
-            <column name="fax_id" type="number(19, 0)"/>
+            <column name="fax_id" type="number(19,0)"/>
             <column name="inactive_date" type="varchar2(40)"/>
             <column name="insert_date" type="varchar2(40)"/>
             <column name="last_activity_date" type="varchar2(40)"/>
             <column name="lst_rem_sent" type="varchar2(40)"/>
             <column name="lst_rem_text" type="varchar2(2000)"/>
             <column name="lst_stmt_sent" type="varchar2(40)"/>
-            <column name="name_id" type="number(19, 0)"/>
+            <column name="name_id" type="number(19,0)"/>
             <column name="perm_acct_yn" type="varchar2(1)"/>
             <column name="phone" type="varchar2(80)"/>
-            <column name="phone_id" type="number(19, 0)"/>
+            <column name="phone_id" type="number(19,0)"/>
             <column name="primary_yn" type="varchar2(1)"/>
             <column name="remarks" type="varchar2(2000)"/>
             <column name="state" type="varchar2(80)"/>
             <column name="sum_cur_code" type="varchar2(20)"/>
-            <column name="update_date" type="varchar2(40)"/>
+            <column name="update_date" type="timestamp(6)"/>
             <column name="zip" type="varchar2(80)"/>
             <column name="tech_created_date" type="timestamp(6)">
                 <constraints nullable="false"/>
@@ -57,9 +57,12 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000010-2" author="jhipster">
+    <changeSet id="010-2" author="Anis">
         <createIndex indexName="idx_ar_account_name_id" tableName="ar_account">
             <column name="name_id"/>
+        </createIndex>
+        <createIndex indexName="idx_ar_account_update_date" tableName="ar_account">
+            <column name="update_date"/>
         </createIndex>
     </changeSet>
 

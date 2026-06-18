@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000001-1" author="jhipster">
+    <changeSet id="001-1" author="Anis">
         <createTable tableName="name">
-            <column name="name_id" type="number(19, 0)">
+            <column name="name_id" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_name"/>
             </column>
             <column name="last" type="varchar2(200)"/>
@@ -36,9 +36,9 @@
             <column name="mail_yn" type="varchar2(1)"/>
             <column name="mail_list" type="varchar2(1)"/>
             <column name="insert_date" type="varchar2(40)"/>
-            <column name="insert_user" type="number(19, 0)"/>
-            <column name="update_date" type="varchar2(40)"/>
-            <column name="update_user" type="number(19, 0)"/>
+            <column name="insert_user" type="number(19,0)"/>
+            <column name="update_date" type="timestamp(6)"/>
+            <column name="update_user" type="number(19,0)"/>
             <column name="account_type" type="varchar2(20)"/>
             <column name="accountsource" type="varchar2(20)"/>
             <column name="business_title" type="varchar2(80)"/>
@@ -66,6 +66,12 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="001-2" author="Anis">
+        <createIndex indexName="idx_name_update_date" tableName="name">
+            <column name="update_date"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

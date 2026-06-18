@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000005-1" author="jhipster">
+    <changeSet id="005-1" author="Anis">
         <createTable tableName="reservation_name">
-            <column name="resv_name_id" type="number(19, 0)">
+            <column name="resv_name_id" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_reservation_name"/>
             </column>
             <column name="begin_date" type="varchar2(40)"/>
@@ -19,8 +19,9 @@
             <column name="guest_first_name" type="varchar2(80)"/>
             <column name="guest_last_name" type="varchar2(80)"/>
             <column name="insert_date" type="varchar2(40)"/>
-            <column name="membership_id" type="number(19, 0)"/>
-            <column name="name_id" type="number(19, 0)"/>
+            <column name="update_date" type="timestamp(6)"/>
+            <column name="membership_id" type="number(19,0)"/>
+            <column name="name_id" type="number(19,0)"/>
             <column name="name_usage_type" type="varchar2(20)"/>
             <column name="party_code" type="varchar2(50)"/>
             <column name="posting_allowed_yn" type="varchar2(1)"/>
@@ -43,20 +44,16 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000005-2" author="jhipster">
+    <changeSet id="005-2" author="Anis">
         <createIndex indexName="idx_resv_name_name_id" tableName="reservation_name">
             <column name="name_id"/>
         </createIndex>
         <createIndex indexName="idx_resv_name_resort" tableName="reservation_name">
             <column name="resort"/>
         </createIndex>
-    </changeSet>
-
-
-    <changeSet id="00000000000005-3" author="jhipster">
-        <addColumn tableName="reservation_name">
-            <column name="update_date" type="varchar2(40)"/>
-        </addColumn>
+        <createIndex indexName="idx_resv_name_update_date" tableName="reservation_name">
+            <column name="update_date"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

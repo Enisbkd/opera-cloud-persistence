@@ -5,66 +5,66 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="00000000000009-1" author="jhipster">
+    <changeSet id="009-1" author="Anis">
         <createTable tableName="financial_transactions">
-            <column name="trx_no" type="number(19, 0)">
+            <column name="trx_no" type="number(19,0)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_financial_transactions"/>
             </column>
-            <column name="ar_led_credit" type="number(22, 10)"/>
-            <column name="ar_led_debit" type="number(22, 10)"/>
+            <column name="ar_led_credit" type="number(22,10)"/>
+            <column name="ar_led_debit" type="number(22,10)"/>
             <column name="ar_state" type="varchar2(20)"/>
-            <column name="arrangement_id" type="number(19, 0)"/>
-            <column name="bill_no" type="number(19, 0)"/>
+            <column name="arrangement_id" type="number(19,0)"/>
+            <column name="bill_no" type="number(19,0)"/>
             <column name="business_date" type="date"/>
-            <column name="cashier_credit" type="number(22, 10)"/>
-            <column name="cashier_debit" type="number(22, 10)"/>
-            <column name="cashier_id" type="number(19, 0)"/>
+            <column name="cashier_credit" type="number(22,10)"/>
+            <column name="cashier_debit" type="number(22,10)"/>
+            <column name="cashier_id" type="number(19,0)"/>
             <column name="cheque_number" type="varchar2(40)"/>
             <column name="currency" type="varchar2(20)"/>
-            <column name="dep_led_credit" type="number(22, 10)"/>
-            <column name="dep_led_debit" type="number(22, 10)"/>
-            <column name="exchange_rate" type="number(22, 10)"/>
-            <column name="fin_dml_seq_no" type="number(19, 0)"/>
-            <column name="folio_no" type="number(19, 0)"/>
+            <column name="dep_led_credit" type="number(22,10)"/>
+            <column name="dep_led_debit" type="number(22,10)"/>
+            <column name="exchange_rate" type="number(22,10)"/>
+            <column name="fin_dml_seq_no" type="number(19,0)"/>
+            <column name="folio_no" type="number(19,0)"/>
             <column name="folio_type" type="varchar2(20)"/>
-            <column name="folio_view" type="number(19, 0)"/>
-            <column name="from_resv_id" type="number(19, 0)"/>
+            <column name="folio_view" type="number(19,0)"/>
+            <column name="from_resv_id" type="number(19,0)"/>
             <column name="ft_subtype" type="varchar2(20)"/>
-            <column name="gross_amount" type="number(22, 10)"/>
-            <column name="guest_account_credit" type="number(22, 10)"/>
-            <column name="guest_account_debit" type="number(22, 10)"/>
+            <column name="gross_amount" type="number(22,10)"/>
+            <column name="guest_account_credit" type="number(22,10)"/>
+            <column name="guest_account_debit" type="number(22,10)"/>
             <column name="insert_date" type="timestamp(6)"/>
-            <column name="insert_user" type="number(19, 0)"/>
+            <column name="insert_user" type="number(19,0)"/>
             <column name="invoice_close_date" type="date"/>
-            <column name="invoice_no" type="number(19, 0)"/>
+            <column name="invoice_no" type="number(19,0)"/>
             <column name="invoice_type" type="varchar2(20)"/>
             <column name="market_code" type="varchar2(20)"/>
-            <column name="membership_id" type="number(19, 0)"/>
-            <column name="name_id" type="number(19, 0)"/>
-            <column name="net_amount" type="number(22, 10)"/>
+            <column name="membership_id" type="number(19,0)"/>
+            <column name="name_id" type="number(19,0)"/>
+            <column name="net_amount" type="number(22,10)"/>
             <column name="number_dialed" type="varchar2(40)"/>
-            <column name="org_posted_amount" type="number(22, 10)"/>
-            <column name="original_resv_name_id" type="number(19, 0)"/>
-            <column name="package_allowance" type="number(22, 10)"/>
+            <column name="org_posted_amount" type="number(22,10)"/>
+            <column name="original_resv_name_id" type="number(19,0)"/>
+            <column name="package_allowance" type="number(22,10)"/>
             <column name="package_arrangement_code" type="varchar2(20)"/>
-            <column name="package_credit" type="number(22, 10)"/>
-            <column name="package_debit" type="number(22, 10)"/>
-            <column name="posted_amount" type="number(22, 10)"/>
+            <column name="package_credit" type="number(22,10)"/>
+            <column name="package_debit" type="number(22,10)"/>
+            <column name="posted_amount" type="number(22,10)"/>
             <column name="posting_date" type="date"/>
             <column name="posting_type" type="varchar2(20)"/>
-            <column name="price_per_unit" type="number(22, 10)"/>
-            <column name="quantity" type="number(22, 10)"/>
+            <column name="price_per_unit" type="number(22,10)"/>
+            <column name="quantity" type="number(22,10)"/>
             <column name="rate_code" type="varchar2(20)"/>
-            <column name="receipt_no" type="number(19, 0)"/>
+            <column name="receipt_no" type="number(19,0)"/>
             <column name="receipt_type" type="varchar2(20)"/>
             <column name="reference" type="varchar2(200)"/>
             <column name="remark" type="varchar2(2000)"/>
             <column name="resort" type="varchar2(20)"/>
-            <column name="resv_name_id" type="number(19, 0)"/>
-            <column name="revenue_amt" type="number(22, 10)"/>
+            <column name="resv_name_id" type="number(19,0)"/>
+            <column name="revenue_amt" type="number(22,10)"/>
             <column name="room" type="varchar2(20)"/>
             <column name="room_class" type="varchar2(20)"/>
-            <column name="routing_instrn_id" type="number(19, 0)"/>
+            <column name="routing_instrn_id" type="number(19,0)"/>
             <column name="source_code" type="varchar2(20)"/>
             <column name="ta_commissionable_yn" type="varchar2(1)"/>
             <column name="target_resort" type="varchar2(20)"/>
@@ -72,23 +72,23 @@
             <column name="tax_inclusive_yn" type="varchar2(1)"/>
             <column name="tc_group" type="varchar2(20)"/>
             <column name="tc_subgroup" type="varchar2(20)"/>
-            <column name="tran_action_id" type="number(19, 0)"/>
-            <column name="trx_amount" type="number(22, 10)"/>
+            <column name="tran_action_id" type="number(19,0)"/>
+            <column name="trx_amount" type="number(22,10)"/>
             <column name="trx_code" type="varchar2(20)"/>
             <column name="trx_date" type="date"/>
-            <column name="trx_no_added_by" type="number(19, 0)"/>
-            <column name="trx_no_adjust" type="number(19, 0)"/>
-            <column name="trx_no_against_package" type="number(19, 0)"/>
-            <column name="trx_no_split" type="number(19, 0)"/>
+            <column name="trx_no_added_by" type="number(19,0)"/>
+            <column name="trx_no_adjust" type="number(19,0)"/>
+            <column name="trx_no_against_package" type="number(19,0)"/>
+            <column name="trx_no_split" type="number(19,0)"/>
             <column name="update_date" type="timestamp(6)"/>
-            <column name="update_user" type="number(19, 0)"/>
-            <column name="cashier_opening_balance" type="number(22, 10)"/>
+            <column name="update_user" type="number(19,0)"/>
+            <column name="cashier_opening_balance" type="number(22,10)"/>
             <column name="hotel_acct" type="varchar2(20)"/>
             <column name="original_room" type="varchar2(20)"/>
-            <column name="resv_deposit_id" type="number(19, 0)"/>
+            <column name="resv_deposit_id" type="number(19,0)"/>
             <column name="source_commission_net_yn" type="varchar2(1)"/>
-            <column name="to_resv_name_id" type="number(19, 0)"/>
-            <column name="trx_no_header" type="number(19, 0)"/>
+            <column name="to_resv_name_id" type="number(19,0)"/>
+            <column name="trx_no_header" type="number(19,0)"/>
             <column name="package_trx_type" type="varchar2(50)"/>
             <column name="ta_commission_net_yn" type="varchar2(1)"/>
             <column name="tech_created_date" type="timestamp(6)">
@@ -100,7 +100,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="00000000000009-2" author="jhipster">
+    <changeSet id="009-2" author="Anis">
         <createIndex indexName="idx_fin_trx_resv_name_id" tableName="financial_transactions">
             <column name="resv_name_id"/>
         </createIndex>
@@ -109,6 +109,9 @@
         </createIndex>
         <createIndex indexName="idx_fin_trx_business_date" tableName="financial_transactions">
             <column name="business_date"/>
+        </createIndex>
+        <createIndex indexName="idx_fin_trx_update_date" tableName="financial_transactions">
+            <column name="update_date"/>
         </createIndex>
     </changeSet>
 
