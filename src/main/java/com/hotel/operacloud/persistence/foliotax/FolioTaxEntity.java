@@ -21,4 +21,7 @@ public class FolioTaxEntity extends AuditEntity {
 
     @Column(name = "payee_name_id")
     private Long payeeNameId;
+
+    @Column(name = "update_date")
+    private String updateDate;
 }

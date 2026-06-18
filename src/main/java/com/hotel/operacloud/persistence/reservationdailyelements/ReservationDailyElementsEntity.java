@@ -54,6 +54,9 @@ public class ReservationDailyElementsEntity extends AuditEntity {
     @Column(name = "original_start_date")
     private LocalDate originalStartDate;
 
+    @Column(name = "update_date")
+    private String updateDate;
+
     private BigDecimal percentage;
 
     @Column(name = "trx_code")

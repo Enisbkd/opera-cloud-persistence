@@ -51,6 +51,7 @@ public class ReservationDailyElementNameConsumer {
         e.setTcGroup(r.getTcGroup());
         e.setTcSubgroup(r.getTcSubgroup());
         e.setTrxCode(r.getTrxCode());
+        e.setUpdateDate(r.getUpdateDate());
         return e;
     }
 }

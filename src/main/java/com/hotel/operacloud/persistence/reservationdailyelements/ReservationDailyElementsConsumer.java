@@ -51,6 +51,7 @@ public class ReservationDailyElementsConsumer {
         e.setRoomCategory(r.getRoomCategory());
         e.setRoomClass(r.getRoomClass());
         e.setOriginalStartDate(r.getOriginalStartDate());
+        e.setUpdateDate(r.getUpdateDate());
         e.setPercentage(r.getPercentage());
         e.setTrxCode(r.getTrxCode());
         return e;

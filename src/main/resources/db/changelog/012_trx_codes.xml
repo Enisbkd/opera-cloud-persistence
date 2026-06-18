@@ -29,4 +29,11 @@
         </createTable>
     </changeSet>
 
+
+    <changeSet id="00000000000012-2" author="jhipster">
+        <addColumn tableName="trx_codes">
+            <column name="update_date" type="varchar2(40)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

@@ -24,4 +24,5 @@ public class ReservationDailyElementNameRecord {
     private String tcGroup;
     private String tcSubgroup;
     private String trxCode;
+    private String updateDate;
 }

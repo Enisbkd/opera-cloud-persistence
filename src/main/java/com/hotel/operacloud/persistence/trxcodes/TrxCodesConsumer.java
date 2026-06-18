@@ -46,6 +46,7 @@ public class TrxCodesConsumer {
         e.setTaxCodeNo(r.getTaxCodeNo());
         e.setTrxCodeType(r.getTrxCodeType());
         e.setIndRevenueGp(r.getIndRevenueGp());
+        e.setUpdateDate(r.getUpdateDate());
         return e;
     }
 }

@@ -46,6 +46,7 @@ public class ReservationNameConsumer {
         e.setGuestFirstName(r.getGuestFirstName());
         e.setGuestLastName(r.getGuestLastName());
         e.setInsertDate(r.getInsertDate());
+        e.setUpdateDate(r.getUpdateDate());
         e.setMembershipId(r.getMembershipId());
         e.setNameId(r.getNameId());
         e.setNameUsageType(r.getNameUsageType());

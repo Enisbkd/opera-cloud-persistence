@@ -18,6 +18,7 @@ public class ReservationNameRecord {
     private String guestFirstName;
     private String guestLastName;
     private String insertDate;
+    private String updateDate;
     private Long membershipId;
     private Long nameId;
     private String nameUsageType;

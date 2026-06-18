@@ -20,4 +20,5 @@ public class TrxCodesRecord {
     private BigDecimal taxCodeNo;
     private String trxCodeType;
     private String indRevenueGp;
+    private String updateDate;
 }

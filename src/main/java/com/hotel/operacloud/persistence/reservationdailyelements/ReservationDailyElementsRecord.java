@@ -23,6 +23,7 @@ public class ReservationDailyElementsRecord {
     private String roomCategory;
     private String roomClass;
     private LocalDate originalStartDate;
+    private String updateDate;
     private BigDecimal percentage;
     private String trxCode;
 }

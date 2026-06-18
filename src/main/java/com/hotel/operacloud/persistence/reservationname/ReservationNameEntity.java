@@ -49,6 +49,9 @@ public class ReservationNameEntity extends AuditEntity {
     @Column(name = "insert_date")
     private String insertDate;
 
+    @Column(name = "update_date")
+    private String updateDate;
+
     @Column(name = "membership_id")
     private Long membershipId;
 

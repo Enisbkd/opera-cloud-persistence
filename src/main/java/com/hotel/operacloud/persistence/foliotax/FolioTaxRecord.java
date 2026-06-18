@@ -13,4 +13,5 @@ public class FolioTaxRecord {
     private Long resvNameId;
     private Long folioView;
     private Long payeeNameId;
+    private String updateDate;
 }

@@ -41,4 +41,7 @@ public class TrxCodesEntity extends AuditEntity {
 
     @Column(name = "ind_revenue_gp")
     private String indRevenueGp;
+
+    @Column(name = "update_date")
+    private String updateDate;
 }

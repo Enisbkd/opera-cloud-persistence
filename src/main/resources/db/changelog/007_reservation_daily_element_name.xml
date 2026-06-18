@@ -44,4 +44,11 @@
             constraintName="pk_reservation_daily_element_name"/>
     </changeSet>
 
+
+    <changeSet id="00000000000007-3" author="jhipster">
+        <addColumn tableName="reservation_daily_element_name">
+            <column name="update_date" type="varchar2(40)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

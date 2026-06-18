@@ -48,6 +48,7 @@ public class FolioTaxConsumer {
         FolioTaxEntity e = new FolioTaxEntity();
         e.setId(id);
         e.setPayeeNameId(r.getPayeeNameId());
+        e.setUpdateDate(r.getUpdateDate());
         return e;
     }
 }

@@ -53,4 +53,7 @@ public class ReservationDailyElementNameEntity extends AuditEntity {
 
     @Column(name = "trx_code")
     private String trxCode;
+
+    @Column(name = "update_date")
+    private String updateDate;
 }
