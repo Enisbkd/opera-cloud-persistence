@@ -2,6 +2,8 @@ package com.hotel.operacloud.persistence.membership;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class MembershipRecord {
 
@@ -17,6 +19,6 @@ public class MembershipRecord {
     private String expirationDate;
     private String inactiveDate;
     private String insertDate;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private Long orderBy;
 }

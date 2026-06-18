@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -25,6 +27,13 @@ public class ReservationNameConsumer {
                 repository.deleteById(record.getResvNameId());
                 log.info("RESERVATION_NAME deleted resvNameId={}", record.getResvNameId());
             } else {
+                Optional<ReservationNameEntity> existing = repository.findById(record.getResvNameId());
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("RESERVATION_NAME skipping stale record resvNameId={}: incoming={} < existing={}",
+                            record.getResvNameId(), record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_NAME upserted resvNameId={}", record.getResvNameId());
             }

@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -30,6 +32,16 @@ public class ReservationSpecialRequestsConsumer {
                 repository.deleteByResvNameId(record.getResvNameId());
                 log.info("RESERVATION_SPECIAL_REQUESTS deleted resvNameId={}", record.getResvNameId());
             } else {
+                ReservationSpecialRequestsId id = new ReservationSpecialRequestsId(
+                        record.getResort(), record.getResvNameId(), record.getSpecialRequestId());
+                Optional<ReservationSpecialRequestsEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("RESERVATION_SPECIAL_REQUESTS skipping stale record resort={} resvNameId={}: incoming={} < existing={}",
+                            record.getResort(), record.getResvNameId(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_SPECIAL_REQUESTS upserted resort={} resvNameId={} specialRequestId={}",
                         record.getResort(), record.getResvNameId(), record.getSpecialRequestId());

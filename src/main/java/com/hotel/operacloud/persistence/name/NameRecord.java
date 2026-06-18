@@ -2,6 +2,8 @@ package com.hotel.operacloud.persistence.name;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class NameRecord {
 
@@ -34,7 +36,7 @@ public class NameRecord {
     private String mailList;
     private String insertDate;
     private Long insertUser;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private Long updateUser;
     private String accountType;
     private String accountsource;

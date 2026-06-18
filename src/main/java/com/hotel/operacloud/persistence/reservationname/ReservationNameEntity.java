@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reservation_name")
@@ -50,7 +51,7 @@ public class ReservationNameEntity extends AuditEntity {
     private String insertDate;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "membership_id")
     private Long membershipId;

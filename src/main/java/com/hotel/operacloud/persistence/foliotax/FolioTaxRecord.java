@@ -3,6 +3,8 @@ package com.hotel.operacloud.persistence.foliotax;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FolioTaxRecord {
@@ -13,5 +15,5 @@ public class FolioTaxRecord {
     private Long resvNameId;
     private Long folioView;
     private Long payeeNameId;
-    private String updateDate;
+    private LocalDateTime updateDate;
 }

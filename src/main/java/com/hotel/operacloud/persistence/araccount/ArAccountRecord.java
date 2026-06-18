@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,6 +47,6 @@ public class ArAccountRecord {
     private String remarks;
     private String state;
     private String sumCurCode;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private String zip;
 }

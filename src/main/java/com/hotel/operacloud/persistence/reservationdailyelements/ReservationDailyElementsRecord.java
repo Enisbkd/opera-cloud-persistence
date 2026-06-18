@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class ReservationDailyElementsRecord {
@@ -23,7 +24,7 @@ public class ReservationDailyElementsRecord {
     private String roomCategory;
     private String roomClass;
     private LocalDate originalStartDate;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private BigDecimal percentage;
     private String trxCode;
 }

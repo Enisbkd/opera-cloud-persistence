@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "name")
 @Getter
@@ -82,7 +84,7 @@ public class NameEntity extends AuditEntity {
     private Long insertUser;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "update_user")
     private Long updateUser;

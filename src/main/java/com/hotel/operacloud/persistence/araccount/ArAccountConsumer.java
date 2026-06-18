@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -27,6 +29,14 @@ public class ArAccountConsumer {
                 repository.deleteById(id);
                 log.info("AR_ACCOUNT deleted resort={} accountCode={}", record.getResort(), record.getAccountCode());
             } else {
+                Optional<ArAccountEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("AR_ACCOUNT skipping stale record resort={} accountCode={}: incoming={} < existing={}",
+                            record.getResort(), record.getAccountCode(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record, id));
                 log.debug("AR_ACCOUNT upserted resort={} accountCode={}", record.getResort(), record.getAccountCode());
             }

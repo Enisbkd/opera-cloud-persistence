@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -27,6 +28,16 @@ public class ReservationDailyElementsConsumer {
                 repository.deleteByResvNameId(record.getResvNameId());
                 log.info("RESERVATION_DAILY_ELEMENTS deleted resvNameId={}", record.getResvNameId());
             } else {
+                ReservationDailyElementsId id = new ReservationDailyElementsId(
+                        record.getReservationDate(), record.getResort(), record.getResvDailyElSeq());
+                Optional<ReservationDailyElementsEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("RESERVATION_DAILY_ELEMENTS skipping stale record resort={} date={} seq={}: incoming={} < existing={}",
+                            record.getResort(), record.getReservationDate(), record.getResvDailyElSeq(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_DAILY_ELEMENTS upserted resort={} date={} seq={}",
                         record.getResort(), record.getReservationDate(), record.getResvDailyElSeq());

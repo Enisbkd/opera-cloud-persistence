@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ar_account")
@@ -121,7 +122,7 @@ public class ArAccountEntity extends AuditEntity {
     private String sumCurCode;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "zip")
     private String zip;

@@ -3,6 +3,7 @@ package com.hotel.operacloud.persistence.reservationname;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class ReservationNameRecord {
@@ -18,7 +19,7 @@ public class ReservationNameRecord {
     private String guestFirstName;
     private String guestLastName;
     private String insertDate;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private Long membershipId;
     private Long nameId;
     private String nameUsageType;

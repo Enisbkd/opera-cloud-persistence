@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -34,6 +36,14 @@ public class FolioTaxConsumer {
                 log.info("FOLIO_TAX deleted resort={} resvNameId={} folioView={}",
                         record.getResort(), record.getResvNameId(), record.getFolioView());
             } else {
+                Optional<FolioTaxEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("FOLIO_TAX skipping stale record resort={} resvNameId={} folioView={}: incoming={} < existing={}",
+                            record.getResort(), record.getResvNameId(), record.getFolioView(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record, id));
                 log.debug("FOLIO_TAX upserted resort={} resvNameId={} folioView={}",
                         record.getResort(), record.getResvNameId(), record.getFolioView());

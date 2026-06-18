@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -26,6 +28,13 @@ public class FinancialTransactionConsumer {
                 repository.deleteById(record.getTrxNo());
                 log.info("FINANCIAL_TRANSACTIONS deleted trxNo={}", record.getTrxNo());
             } else {
+                Optional<FinancialTransactionEntity> existing = repository.findById(record.getTrxNo());
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("FINANCIAL_TRANSACTIONS skipping stale record trxNo={}: incoming={} < existing={}",
+                            record.getTrxNo(), record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("FINANCIAL_TRANSACTIONS upserted trxNo={}", record.getTrxNo());
             }

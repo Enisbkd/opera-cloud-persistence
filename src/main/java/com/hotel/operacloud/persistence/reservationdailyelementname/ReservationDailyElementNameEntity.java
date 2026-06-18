@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reservation_daily_element_name")
@@ -55,5 +56,5 @@ public class ReservationDailyElementNameEntity extends AuditEntity {
     private String trxCode;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 }

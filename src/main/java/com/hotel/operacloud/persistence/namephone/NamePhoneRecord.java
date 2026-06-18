@@ -2,6 +2,8 @@ package com.hotel.operacloud.persistence.namephone;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class NamePhoneRecord {
 
@@ -21,7 +23,7 @@ public class NamePhoneRecord {
     private String inactiveDate;
     private String insertDate;
     private Long insertUser;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private Long updateUser;
     private Long addressId;
     private Long laptopChange;

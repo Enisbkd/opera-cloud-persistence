@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -26,6 +28,16 @@ public class ReservationDailyElementNameConsumer {
                 repository.deleteByResvNameId(record.getResvNameId());
                 log.info("RESERVATION_DAILY_ELEMENT_NAME deleted resvNameId={}", record.getResvNameId());
             } else {
+                ReservationDailyElementNameId id = new ReservationDailyElementNameId(
+                        record.getResort(), record.getResvNameId(), record.getReservationDate());
+                Optional<ReservationDailyElementNameEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("RESERVATION_DAILY_ELEMENT_NAME skipping stale record resort={} resvNameId={} date={}: incoming={} < existing={}",
+                            record.getResort(), record.getResvNameId(), record.getReservationDate(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("RESERVATION_DAILY_ELEMENT_NAME upserted resort={} resvNameId={} date={}",
                         record.getResort(), record.getResvNameId(), record.getReservationDate());

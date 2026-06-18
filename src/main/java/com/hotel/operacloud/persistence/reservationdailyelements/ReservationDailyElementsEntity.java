@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reservation_daily_elements")
@@ -55,7 +56,7 @@ public class ReservationDailyElementsEntity extends AuditEntity {
     private LocalDate originalStartDate;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     private BigDecimal percentage;
 

@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -27,6 +29,14 @@ public class TrxCodesConsumer {
                 repository.deleteById(id);
                 log.info("TRX_CODES deleted resort={} trxCode={}", record.getResort(), record.getTrxCode());
             } else {
+                Optional<TrxCodesEntity> existing = repository.findById(id);
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("TRX_CODES skipping stale record resort={} trxCode={}: incoming={} < existing={}",
+                            record.getResort(), record.getTrxCode(),
+                            record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record, id));
                 log.debug("TRX_CODES upserted resort={} trxCode={}", record.getResort(), record.getTrxCode());
             }

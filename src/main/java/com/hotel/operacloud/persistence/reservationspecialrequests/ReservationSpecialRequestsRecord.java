@@ -2,6 +2,8 @@ package com.hotel.operacloud.persistence.reservationspecialrequests;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ReservationSpecialRequestsRecord {
 
@@ -17,6 +19,6 @@ public class ReservationSpecialRequestsRecord {
     private Long insertUser;
     private String preArrivalDt;
     private String source;
-    private String updateDate;
+    private LocalDateTime updateDate;
     private Long updateUser;
 }

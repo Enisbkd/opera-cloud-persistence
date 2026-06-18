@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -25,6 +27,13 @@ public class NameConsumer {
                 repository.deleteById(record.getNameId());
                 log.info("NAME deleted nameId={}", record.getNameId());
             } else {
+                Optional<NameEntity> existing = repository.findById(record.getNameId());
+                if (existing.isPresent() && existing.get().getUpdateDate() != null && record.getUpdateDate() != null
+                        && record.getUpdateDate().isBefore(existing.get().getUpdateDate())) {
+                    log.warn("NAME skipping stale record nameId={}: incoming={} < existing={}",
+                            record.getNameId(), record.getUpdateDate(), existing.get().getUpdateDate());
+                    return;
+                }
                 repository.save(toEntity(record));
                 log.debug("NAME upserted nameId={}", record.getNameId());
             }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class ReservationDailyElementNameRecord {
@@ -24,5 +25,5 @@ public class ReservationDailyElementNameRecord {
     private String tcGroup;
     private String tcSubgroup;
     private String trxCode;
-    private String updateDate;
+    private LocalDateTime updateDate;
 }

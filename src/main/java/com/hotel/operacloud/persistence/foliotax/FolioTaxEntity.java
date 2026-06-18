@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "folio_tax")
 @Getter
@@ -23,5 +25,5 @@ public class FolioTaxEntity extends AuditEntity {
     private Long payeeNameId;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 }

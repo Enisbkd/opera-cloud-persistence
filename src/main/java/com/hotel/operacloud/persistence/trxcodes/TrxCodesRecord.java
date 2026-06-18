@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,5 +21,5 @@ public class TrxCodesRecord {
     private BigDecimal taxCodeNo;
     private String trxCodeType;
     private String indRevenueGp;
-    private String updateDate;
+    private LocalDateTime updateDate;
 }

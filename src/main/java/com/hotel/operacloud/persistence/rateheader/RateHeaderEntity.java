@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "rate_header")
 @Getter
@@ -47,7 +49,7 @@ public class RateHeaderEntity extends AuditEntity {
     private String insertDate;
 
     @Column(name = "update_date")
-    private String updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "trx_code")
     private String trxCode;
