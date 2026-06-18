@@ -7,8 +7,8 @@ spring:
 
 logging:
   level:
-    com.hotel.operacloud: DEBUG
-    org.springframework.kafka: INFO
+    com.hotel.operacloud: INFO
+    org.springframework.kafka: WARN
     org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
+    org.hibernate.orm.jdbc.bind: INFO
     liquibase: DEBUG
