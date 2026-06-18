@@ -51,8 +51,8 @@ public class NameAddressEntity extends AuditEntity {
     @Column(name = "postal_code")
     private String postalCode;
 
-    @Column(name = "country_code")
-    private String countryCode;
+    @Column(name = "country")
+    private String country;
 
     @Column(name = "primary_yn")
     private String primaryYn;

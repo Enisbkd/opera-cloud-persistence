@@ -58,6 +58,8 @@ public class NameConsumer {
         e.setLanguage(r.getLanguage());
         e.setBirthCountry(r.getBirthCountry());
         e.setBirthPlace(r.getBirthPlace());
+        e.setBirthDateStr(r.getBirthDateStr());
+        e.setBirthDate(r.getBirthDate());
         e.setNameType(r.getNameType());
         e.setNameCode(r.getNameCode());
         e.setProfession(r.getProfession());

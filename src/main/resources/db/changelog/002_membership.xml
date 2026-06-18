@@ -6,9 +6,9 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="002-1" author="Anis">
-        <createTable tableName="membership">
+        <createTable tableName="memberships">
             <column name="membership_id" type="number(19,0)">
-                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_membership"/>
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_memberships"/>
             </column>
             <column name="name_id" type="number(19,0)"/>
             <column name="membership_type" type="varchar2(40)"/>
@@ -32,10 +32,10 @@
     </changeSet>
 
     <changeSet id="002-2" author="Anis">
-        <createIndex indexName="idx_membership_name_id" tableName="membership">
+        <createIndex indexName="idx_memberships_name_id" tableName="memberships">
             <column name="name_id"/>
         </createIndex>
-        <createIndex indexName="idx_membership_update_date" tableName="membership">
+        <createIndex indexName="idx_memberships_update_date" tableName="memberships">
             <column name="update_date"/>
         </createIndex>
     </changeSet>

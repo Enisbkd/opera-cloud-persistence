@@ -20,7 +20,7 @@ public class NameAddressRecord {
     private String state;
     private String province;
     private String postalCode;
-    private String countryCode;
+    private String country;
     private String primaryYn;
     private String insertDate;
     private Long insertUser;

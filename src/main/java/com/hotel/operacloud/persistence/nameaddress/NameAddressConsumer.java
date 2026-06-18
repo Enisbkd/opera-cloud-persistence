@@ -61,7 +61,7 @@ public class NameAddressConsumer {
         e.setState(r.getState());
         e.setProvince(r.getProvince());
         e.setPostalCode(r.getPostalCode());
-        e.setCountryCode(r.getCountryCode());
+        e.setCountry(r.getCountry());
         e.setPrimaryYn(r.getPrimaryYn());
         e.setInsertDate(r.getInsertDate());
         e.setInsertUser(r.getInsertUser());

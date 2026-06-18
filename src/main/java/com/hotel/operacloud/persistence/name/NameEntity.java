@@ -39,6 +39,12 @@ public class NameEntity extends AuditEntity {
     @Column(name = "birth_place")
     private String birthPlace;
 
+    @Column(name = "birth_date_str")
+    private String birthDateStr;
+
+    @Column(name = "birth_date")
+    private String birthDate;
+
     @Column(name = "name_type")
     private String nameType;
 

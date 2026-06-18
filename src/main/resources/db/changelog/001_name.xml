@@ -35,6 +35,8 @@
             <column name="email_yn" type="varchar2(1)"/>
             <column name="mail_yn" type="varchar2(1)"/>
             <column name="mail_list" type="varchar2(1)"/>
+            <column name="birth_date_str" type="varchar2(40)"/>
+            <column name="birth_date" type="varchar2(40)"/>
             <column name="insert_date" type="varchar2(40)"/>
             <column name="insert_user" type="number(19,0)"/>
             <column name="update_date" type="timestamp(6)"/>

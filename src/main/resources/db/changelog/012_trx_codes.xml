@@ -6,7 +6,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="012-1" author="Anis">
-        <createTable tableName="trx_codes">
+        <createTable tableName="trx$_codes">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_trx_codes"/>
             </column>
@@ -31,7 +31,7 @@
     </changeSet>
 
     <changeSet id="012-2" author="Anis">
-        <createIndex indexName="idx_trx_codes_update_date" tableName="trx_codes">
+        <createIndex indexName="idx_trx_codes_update_date" tableName="trx$_codes">
             <column name="update_date"/>
         </createIndex>
     </changeSet>

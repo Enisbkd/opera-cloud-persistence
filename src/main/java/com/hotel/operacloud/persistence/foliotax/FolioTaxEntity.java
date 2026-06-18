@@ -12,7 +12,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "folio_tax")
+@Table(name = "folio$_tax")
 @Getter
 @Setter
 @NoArgsConstructor

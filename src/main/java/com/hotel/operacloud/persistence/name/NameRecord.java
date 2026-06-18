@@ -21,6 +21,8 @@ public class NameRecord {
     private String language;
     private String birthCountry;
     private String birthPlace;
+    private String birthDateStr;
+    private String birthDate;
     private String nameType;
     private String nameCode;
     private String profession;

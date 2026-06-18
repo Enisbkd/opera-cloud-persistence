@@ -21,7 +21,7 @@
             <column name="state" type="varchar2(40)"/>
             <column name="province" type="varchar2(40)"/>
             <column name="postal_code" type="varchar2(20)"/>
-            <column name="country_code" type="varchar2(20)"/>
+            <column name="country" type="varchar2(20)"/>
             <column name="primary_yn" type="varchar2(1)"/>
             <column name="insert_date" type="varchar2(40)"/>
             <column name="insert_user" type="number(19,0)"/>
