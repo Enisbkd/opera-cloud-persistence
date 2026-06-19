@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "trx$_codes")
+@Table(name = "trx_codes")
 @Getter
 @Setter
 @NoArgsConstructor

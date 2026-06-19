@@ -6,7 +6,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="011-1" author="Anis">
-        <createTable tableName="folio$_tax">
+        <createTable tableName="folio_tax">
             <column name="resort" type="varchar2(20)">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="pk_folio_tax"/>
             </column>
@@ -28,12 +28,17 @@
     </changeSet>
 
     <changeSet id="011-2" author="Anis">
-        <createIndex indexName="idx_folio_tax_resv_name_id" tableName="folio$_tax">
+        <createIndex indexName="idx_folio_tax_resv_name_id" tableName="folio_tax">
             <column name="resv_name_id"/>
         </createIndex>
-        <createIndex indexName="idx_folio_tax_update_date" tableName="folio$_tax">
+        <createIndex indexName="idx_folio_tax_update_date" tableName="folio_tax">
             <column name="update_date"/>
         </createIndex>
+    </changeSet>
+
+    <changeSet id="011-3" author="Anis">
+        <sql>CREATE OR REPLACE SYNONYM "FOLIO$_TAX" FOR folio_tax</sql>
+        <rollback>DROP SYNONYM "FOLIO$_TAX"</rollback>
     </changeSet>
 
 </databaseChangeLog>
