@@ -93,6 +93,8 @@ public class NameConsumer {
         e.setTracecode(r.getTracecode());
         e.setScope(r.getScope());
         e.setScopeCity(r.getScopeCity());
+        e.setProductInterest(r.getProductInterest());
+        e.setRegion(r.getRegion());
         e.setChainCode(r.getChainCode());
         e.setResortRegistered(r.getResortRegistered());
         e.setLastUpdatedResort(r.getLastUpdatedResort());

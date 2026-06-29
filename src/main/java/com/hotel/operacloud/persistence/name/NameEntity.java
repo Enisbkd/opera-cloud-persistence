@@ -130,6 +130,11 @@ public class NameEntity extends AuditEntity {
     @Column(name = "scope_city")
     private String scopeCity;
 
+    @Column(name = "product_interest")
+    private String productInterest;
+
+    private String region;
+
     @Column(name = "chain_code")
     private String chainCode;
 

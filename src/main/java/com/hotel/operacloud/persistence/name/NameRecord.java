@@ -56,6 +56,8 @@ public class NameRecord {
     private String tracecode;
     private String scope;
     private String scopeCity;
+    private String productInterest;
+    private String region;
     private String chainCode;
     private String resortRegistered;
     private String lastUpdatedResort;

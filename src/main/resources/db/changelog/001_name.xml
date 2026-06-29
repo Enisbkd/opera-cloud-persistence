@@ -57,6 +57,8 @@
             <column name="tracecode" type="varchar2(20)"/>
             <column name="scope" type="varchar2(20)"/>
             <column name="scope_city" type="varchar2(20)"/>
+            <column name="product_interest" type="varchar2(2000)"/>
+            <column name="region" type="varchar2(20)"/>
             <column name="chain_code" type="varchar2(20)"/>
             <column name="resort_registered" type="varchar2(20)"/>
             <column name="last_updated_resort" type="varchar2(20)"/>
