@@ -1,5 +1,6 @@
 package com.hotel.operacloud.persistence.nameaddress;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class NameAddressRecord {
     private String state;
     private String province;
     private String postalCode;
+    @JsonProperty("countryCode")
     private String country;
     private String primaryYn;
     private String insertDate;

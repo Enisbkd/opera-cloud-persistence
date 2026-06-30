@@ -9,6 +9,6 @@ logging:
   level:
     com.hotel.operacloud: INFO
     org.springframework.kafka: WARN
-    org.hibernate.SQL: DEBUG
+    org.hibernate.SQL: INFO
     org.hibernate.orm.jdbc.bind: INFO
     liquibase: DEBUG
